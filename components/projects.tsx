@@ -31,9 +31,9 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: "Página Oficial Doggers de Colombia",
+      title: "Sitio web de orquesta sinfónica",
       description:
-        "Página web oficial para Doggers de Colombia, organización dedicada al cuidado y adopción de perros. Diseño responsivo con información sobre servicios y contacto.",
+        "Página web oficial para una orquesta: presentación de la agrupación, temporada y conciertos, y canales de contacto. Diseño responsivo con énfasis en programación y comunicación con el público.",
       image: "/images/doggers-colombia.png",
       tags: ["HTML", "CSS", "JavaScript", "Responsive"],
       githubUrl: "https://github.com/FelipeB17/PAGINA-WEB-DOGGERS.git",
