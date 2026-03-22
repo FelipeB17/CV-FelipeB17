@@ -31,7 +31,7 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: "Sitio web de orquesta sinfónica",
+      title: "Sitio web de orquesta Doggers de Colombia",
       description:
         "Página web oficial para una orquesta: presentación de la agrupación, temporada y conciertos, y canales de contacto. Diseño responsivo con énfasis en programación y comunicación con el público.",
       image: "/images/doggers-colombia.png",
