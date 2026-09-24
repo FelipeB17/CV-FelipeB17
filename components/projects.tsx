@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Lock } from "lucide-react"
 import { Github } from "@/components/brand-icons"
 import Image from "next/image"
 import { motion } from "framer-motion"
@@ -29,7 +29,8 @@ export default function Projects() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   }
 
-  const projects = [
+  // Los proyectos sin githubUrl son de clientes y su código es privado
+  const projects: { id: number; title: string; description: string; image: string; tags: string[]; githubUrl?: string; demoUrl?: string }[] = [
     {
       id: 0,
       title: "Guías de Envío Kamakala",
@@ -37,7 +38,6 @@ export default function Projects() {
         "Herramienta web para Kamakala (fábrica de calzado) que carga los pedidos de cada venta en vivo desde Google Sheets y genera las guías de envío listas para imprimir o guardar en PDF, eliminando el proceso manual y reduciendo los tiempos de despacho.",
       image: "/images/kamakala.png",
       tags: ["Next.js", "JavaScript", "Google Sheets", "Automatización"],
-      githubUrl: "https://github.com/FelipeB17/kamakala-lives-tarjet-2-0",
     },
     {
       id: 1,
@@ -46,7 +46,6 @@ export default function Projects() {
         "Página web oficial para una orquesta: presentación de la agrupación, temporada y conciertos, y canales de contacto. Diseño responsivo con énfasis en programación y comunicación con el público.",
       image: "/images/doggers-colombia.png",
       tags: ["HTML", "CSS", "JavaScript", "Responsive"],
-      githubUrl: "https://github.com/FelipeB17/PAGINA-WEB-DOGGERS.git",
       demoUrl: "https://doggersdecolombia.netlify.app/",
     },
     {
@@ -154,17 +153,27 @@ export default function Projects() {
                     ))}
                   </div>
                   <div className="flex gap-3 mt-auto">
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="bg-transparent border-blue-800 text-slate-200 hover:bg-blue-900/30 hover:text-white"
-                    >
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4" />
-                        Código
-                      </a>
-                    </Button>
+                    {project.githubUrl ? (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="bg-transparent border-blue-800 text-slate-200 hover:bg-blue-900/30 hover:text-white"
+                      >
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          Código
+                        </a>
+                      </Button>
+                    ) : (
+                      <span
+                        className="inline-flex items-center gap-2 h-9 px-3 rounded-md border border-slate-700 text-sm text-slate-400"
+                        title="Proyecto para un cliente: el código es privado"
+                      >
+                        <Lock className="h-4 w-4" />
+                        Código privado
+                      </span>
+                    )}
                     {project.demoUrl && (
                       <Button
                         asChild
