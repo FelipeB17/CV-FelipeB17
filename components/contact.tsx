@@ -273,7 +273,7 @@ export default function Contact() {
                     <div className="ml-4">
                       <h4 className="text-sm font-medium text-slate-500 dark:text-slate-400">LinkedIn</h4>
                       <a
-                        href="https://www.linkedin.com/in/andres-felipe-beltran-assaf-4221b0215"
+                        href="https://www.linkedin.com/in/andresfelipebeltranassaf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"

@@ -64,7 +64,7 @@ export default function Footer() {
                 </Button>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/andres-felipe-beltran-assaf-4221b0215"
+                href="https://www.linkedin.com/in/andresfelipebeltranassaf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
