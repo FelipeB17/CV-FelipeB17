@@ -52,7 +52,7 @@ export default function About() {
             Conoce mi <span className="text-gradient">historia</span>
           </motion.h2>
           <motion.p variants={item} className="text-slate-300 max-w-2xl mx-auto">
-            Estudiante de Ingeniería de Sistemas con enfoque en Análisis de Datos, Ingeniería de Datos y QA
+            Estudiante de décimo semestre de Ingeniería de Sistemas con enfoque en Análisis de Datos, Desarrollo de Software y Bases de Datos
           </motion.p>
         </motion.div>
 
@@ -68,17 +68,20 @@ export default function About() {
                 <h3 className="text-2xl font-bold mb-4 text-gradient">Mi Historia</h3>
                 <p className="text-slate-300 mb-4">
                   ¡Hola! Soy Andrés Felipe Beltrán Assaf, orgullosamente de Cúcuta, Norte de Santander,
-                  Colombia. Actualmente estudio Ingeniería de Sistemas desde el año 2022, un camino que elegí no por
-                  casualidad, sino por pasión.
+                  Colombia. Curso décimo semestre de Ingeniería de Sistemas en la Universidad Francisco de Paula
+                  Santander, un camino que elegí no por casualidad, sino por pasión.
                 </p>
                 <p className="text-slate-300 mb-4">
-                  Cuento con experiencia en gestión administrativa, seguimiento de procedimientos y manejo de información
-                  organizacional. Soy competente en Excel avanzado, Power BI y bases de datos para la elaboración de reportes,
-                  análisis de indicadores y apoyo en la toma de decisiones.
+                  Mi formación se ha orientado al análisis de datos, el desarrollo de software y la gestión de bases de
+                  datos. Trabajo con Power BI, Excel avanzado, MySQL, Java, Python, React y Angular, además de pruebas de
+                  software, documentación funcional y fundamentos de computación en la nube. Actualmente realizo mis
+                  prácticas profesionales en Termotasajero S.A. E.S.P., donde desarrollo aplicaciones integradas con
+                  Microsoft 365.
                 </p>
                 <p className="text-slate-300">
-                  Mi perfil es analítico, orientado a la mejora continua, optimización de recursos y cumplimiento de
-                  lineamientos internos. Me apasiona transformar datos en información valiosa para la toma de decisiones.
+                  Destaco por mi responsabilidad, capacidad de análisis y disposición para el aprendizaje continuo. Busco
+                  aportar valor a través del análisis de información y el desarrollo de soluciones tecnológicas que mejoren
+                  los procesos en los que participo.
                 </p>
               </div>
             </div>
@@ -97,12 +100,31 @@ export default function About() {
                   <li className="relative pl-8">
                     <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
                     <div className="absolute left-2 top-4 w-[1px] h-[calc(100%+10px)] bg-gradient-to-b from-blue-600 to-transparent"></div>
-                    <h4 className="font-bold text-lg">Estudiante de Ingeniería de Sistemas</h4>
+                    <h4 className="font-bold text-lg">Becario – Termotasajero S.A. E.S.P.</h4>
+                    <p className="text-sm text-blue-400 font-medium">Cúcuta, Colombia • Agosto 2026 - Actualidad</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Prácticas profesionales: desarrollo de aplicaciones web integradas con Microsoft 365 y apoyo en
+                      infraestructura de TI.
+                    </p>
+                  </li>
+                  <li className="relative pl-8">
+                    <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+                    <div className="absolute left-2 top-4 w-[1px] h-[calc(100%+10px)] bg-gradient-to-b from-blue-600 to-transparent"></div>
+                    <h4 className="font-bold text-lg">Kamakala (fábrica de calzado)</h4>
+                    <p className="text-sm text-blue-400 font-medium">Cúcuta, Colombia • Junio - Agosto 2026</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Apoyo en ventas y automatización de la generación de guías de envío y del registro de compras.
+                    </p>
+                  </li>
+                  <li className="relative pl-8">
+                    <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
+                    <div className="absolute left-2 top-4 w-[1px] h-[calc(100%+10px)] bg-gradient-to-b from-blue-600 to-transparent"></div>
+                    <h4 className="font-bold text-lg">Ingeniería de Sistemas – 10.º semestre</h4>
                     <p className="text-sm text-blue-400 font-medium">
                       Universidad Francisco de Paula Santander • 2022 - Presente
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
-                      Desarrollando competencias en programación, trabajo colaborativo y gestión de TI.
+                      Análisis de datos, desarrollo de software y gestión de bases de datos.
                     </p>
                   </li>
                   <li className="relative pl-8">
@@ -175,9 +197,9 @@ export default function About() {
                     <Database className="h-8 w-8" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2 text-white">Ingeniería de Datos</h3>
+                <h3 className="text-xl font-bold text-center mb-2 text-white">Bases de Datos</h3>
                 <p className="text-slate-300 text-center">
-                  Diseño de pipelines ETL, modelado de datos y gestión de bases de datos SQL para sistemas escalables.
+                  Modelado y gestión de bases de datos relacionales (MySQL, SQL Server) y NoSQL (MongoDB).
                 </p>
               </CardContent>
             </Card>
@@ -207,9 +229,9 @@ export default function About() {
                     <Cpu className="h-8 w-8" />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-2 text-white">Control de Procesos</h3>
+                <h3 className="text-xl font-bold text-center mb-2 text-white">Automatización de Procesos</h3>
                 <p className="text-slate-300 text-center">
-                  Seguimiento y optimización de procedimientos operativos para mejorar eficiencia organizacional.
+                  Automatización de tareas manuales con Power Automate, Microsoft Graph API y desarrollo a la medida.
                 </p>
               </CardContent>
             </Card>
@@ -225,7 +247,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-bold text-center mb-2 text-white">Desarrollo Web</h3>
                 <p className="text-slate-300 text-center">
-                  Conocimientos en React y TypeScript para crear aplicaciones web modernas.
+                  Aplicaciones web con React, Angular, Node.js, Spring Boot y TypeScript.
                 </p>
               </CardContent>
             </Card>

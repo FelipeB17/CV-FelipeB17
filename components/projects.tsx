@@ -2,7 +2,8 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
+import { ExternalLink } from "lucide-react"
+import { Github } from "@/components/brand-icons"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -29,6 +30,15 @@ export default function Projects() {
   }
 
   const projects = [
+    {
+      id: 0,
+      title: "Guías de Envío Kamakala",
+      description:
+        "Herramienta web para Kamakala (fábrica de calzado) que carga los pedidos de cada venta en vivo desde Google Sheets y genera las guías de envío listas para imprimir o guardar en PDF, eliminando el proceso manual y reduciendo los tiempos de despacho.",
+      image: "/images/kamakala.png",
+      tags: ["Next.js", "JavaScript", "Google Sheets", "Automatización"],
+      githubUrl: "https://github.com/FelipeB17/kamakala-lives-tarjet-2-0",
+    },
     {
       id: 1,
       title: "Sitio web de orquesta Doggers de Colombia",
@@ -120,47 +130,20 @@ export default function Projects() {
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={item} className="card-hover">
-              <Card className="border-0 shadow-xl overflow-hidden project-card bg-white dark:bg-slate-800 h-full">
+              <Card className="border-0 shadow-xl overflow-hidden project-card bg-white dark:bg-slate-800 h-full flex flex-col">
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover project-image"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <div className="flex gap-3">
-                      <Button
-                        asChild
-                        variant="outline"
-                        size="sm"
-                        className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-                      >
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
-                          Código
-                        </a>
-                      </Button>
-                      {project.demoUrl && (
-                        <Button
-                          asChild
-                          variant="outline"
-                          size="sm"
-                          className="bg-blue-500/80 backdrop-blur-sm border-blue-400/50 text-white hover:bg-blue-600/80"
-                        >
-                          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Ver Demo
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-slate-600 dark:text-slate-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -169,6 +152,31 @@ export default function Projects() {
                         {tag}
                       </span>
                     ))}
+                  </div>
+                  <div className="flex gap-3 mt-auto">
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="bg-transparent border-blue-800 text-slate-200 hover:bg-blue-900/30 hover:text-white"
+                    >
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="h-4 w-4" />
+                        Código
+                      </a>
+                    </Button>
+                    {project.demoUrl && (
+                      <Button
+                        asChild
+                        size="sm"
+                        className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700"
+                      >
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4" />
+                          Ver Demo
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>

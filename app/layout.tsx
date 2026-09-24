@@ -1,15 +1,23 @@
 import type React from "react"
+import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import type { Metadata } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  // Netlify define URL con el dominio del sitio durante el build
+  metadataBase: new URL(process.env.URL ?? "http://localhost:3000"),
   title: "Andres Felipe Beltran Assaf | Estudiante de Ingeniería de Sistemas",
-  description: "Portafolio personal y sitio web profesional",
-    generator: 'v0.dev'
+  description:
+    "Portafolio de Andres Felipe Beltran Assaf, estudiante de décimo semestre de Ingeniería de Sistemas (UFPS) con enfoque en Análisis de Datos, Desarrollo de Software y Bases de Datos.",
+  openGraph: {
+    title: "Andres Felipe Beltran Assaf",
+    description: "Análisis de Datos, Desarrollo de Software y Bases de Datos",
+    images: ["/profile.jpg"],
+    locale: "es_CO",
+    type: "website",
+  },
 }
 
 export default function RootLayout({
@@ -18,15 +26,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="es" className="dark">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
-
-
-import './globals.css'

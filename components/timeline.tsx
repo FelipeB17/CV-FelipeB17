@@ -28,16 +28,36 @@ export default function Timeline() {
   const timelineItems = [
     {
       id: 1,
-      title: "Estudiante de Ingeniería de Sistemas",
+      title: "Becario – Prácticas profesionales",
+      company: "Termotasajero S.A. E.S.P.",
+      location: "Área metropolitana de Cúcuta · Presencial",
+      period: "Agosto 2026 - Actualidad",
+      description:
+        "Apoyo en infraestructura y administración de tecnologías de la información. Desarrollo de una aplicación web interna integrada con Microsoft 365: frontend en React 19, Vite, TypeScript y Tailwind CSS; backend en Node.js y Express con TypeScript; inicio de sesión con Microsoft 365 (MSAL) y datos en Excel Online (SharePoint) mediante Microsoft Graph API, alimentados con Microsoft Forms y Power Automate.",
+      type: "work",
+    },
+    {
+      id: 2,
+      title: "Apoyo en ventas y automatización",
+      company: "Kamakala (fábrica de calzado)",
+      location: "Cúcuta, Colombia",
+      period: "Junio 2026 - Agosto 2026",
+      description:
+        "Apoyo en ventas, logística y control de inventario. Desarrollé una herramienta que genera e imprime automáticamente las guías de envío a partir de los pedidos, eliminando el proceso manual, y una hoja de cálculo en Excel para el registro automático de compras.",
+      type: "work",
+    },
+    {
+      id: 3,
+      title: "Estudiante de Ingeniería de Sistemas – 10.º semestre",
       company: "Universidad Francisco de Paula Santander",
       location: "Cúcuta, Colombia",
       period: "2022 - Presente",
       description:
-        "Desarrollando competencias en programación, trabajo colaborativo, resolución de problemas y gestión de tecnologías de la información.",
+        "Formación orientada al análisis de datos, el desarrollo de software y la gestión de bases de datos, además de pruebas de software, documentación funcional y fundamentos de computación en la nube.",
       type: "education",
     },
     {
-      id: 2,
+      id: 4,
       title: "Gestión Administrativa y Análisis de Datos",
       company: "Fundación Conexión Paz",
       location: "Cúcuta, Colombia",
@@ -47,8 +67,8 @@ export default function Timeline() {
       type: "work",
     },
     {
-      id: 3,
-      title: "Bachiller",
+      id: 5,
+      title: "Bachiller Académico",
       company: "Colegio Madre Carmen",
       location: "Cúcuta, Colombia",
       period: "2021",

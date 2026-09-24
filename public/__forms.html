@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- Formulario estático para que Netlify detecte el formulario "contacto" durante el deploy.
+     El formulario visible está en components/contact.tsx y envía los datos aquí con fetch. -->
+<html>
+  <body>
+    <form name="contacto" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contacto" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

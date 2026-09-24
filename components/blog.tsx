@@ -83,6 +83,7 @@ export default function Blog() {
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
                     fill
+                    sizes="(min-width: 768px) 768px, 100vw"
                     className="object-cover project-image"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">

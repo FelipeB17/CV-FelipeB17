@@ -34,7 +34,9 @@ export default function Navbar() {
   const navLinks = [
     { href: "#home", label: "Inicio" },
     { href: "#about", label: "Sobre Mí" },
+    { href: "#skills", label: "Habilidades" },
     { href: "#projects", label: "Proyectos" },
+    { href: "#timeline", label: "Trayectoria" },
     { href: "#certifications", label: "Certificaciones" },
     { href: "#blog", label: "Blog" },
     { href: "#contact", label: "Contacto" },
@@ -51,12 +53,12 @@ export default function Navbar() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-slate-200 hover:text-blue-400 nav-link"
+                className="px-3 py-2 text-sm font-medium text-slate-200 hover:text-blue-400 nav-link"
                 onClick={closeMobileMenu}
               >
                 {link.label}
@@ -65,13 +67,14 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center lg:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleMobileMenu}
               className="rounded-full"
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -100,14 +103,6 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button
-                asChild
-                className="mt-4 w-full rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-              >
-                <a href="#contact" onClick={closeMobileMenu}>
-                  Contacto
-                </a>
-              </Button>
             </nav>
           </motion.div>
         )}

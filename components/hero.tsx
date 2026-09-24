@@ -1,32 +1,40 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Github, Mail, Linkedin } from "lucide-react"
+import { ArrowRight, Mail } from "lucide-react"
+import { Github, Linkedin } from "@/components/brand-icons"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
+type Particle = {
+  id: number
+  size: number
+  x: number
+  y: number
+  drift: number
+  duration: number
+  delay: number
+}
+
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0)
+  // Las partículas se generan solo en el cliente: Math.random() en el render
+  // produce valores distintos en servidor y cliente (error de hidratación).
+  const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    setParticles(
+      Array.from({ length: 20 }).map((_, i) => ({
+        id: i,
+        size: Math.random() * 3 + 1,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        drift: Math.random() * 200 - 100,
+        duration: Math.random() * 20 + 10,
+        delay: Math.random() * 5,
+      })),
+    )
   }, [])
-
-  // Create particles
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    size: Math.random() * 3 + 1,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    duration: Math.random() * 20 + 10,
-    delay: Math.random() * 5,
-  }))
 
   return (
     <section id="home" className="relative py-20 md:py-32 overflow-hidden hero-pattern min-h-screen flex items-center">
@@ -53,7 +61,7 @@ export default function Hero() {
             }}
             animate={{
               y: [0, -500],
-              x: [0, Math.random() * 200 - 100],
+              x: [0, particle.drift],
               opacity: [0, 1, 0],
             }}
             transition={{
@@ -82,7 +90,7 @@ export default function Hero() {
             >
               <div className="bg-slate-900 rounded-full px-4 py-1">
                 <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">
-                  Estudiante de Ingeniería de Sistemas
+                  Ingeniería de Sistemas · 10.º semestre
                 </span>
               </div>
             </motion.div>
@@ -103,7 +111,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Enfoque en Análisis de Datos, Ingeniería de Datos y Quality Assurance (QA)
+              Enfoque en Análisis de Datos, Desarrollo de Software y Bases de Datos. Actualmente becario en Termotasajero S.A. E.S.P.
             </motion.p>
 
             <motion.div
@@ -177,7 +185,7 @@ export default function Hero() {
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur-lg opacity-20 animate-pulse"></div>
             <div className="relative h-64 w-64 md:h-80 md:w-80 rounded-full overflow-hidden border-4 border-blue-500/20 glow">
-              <Image src="/profile.jpg" alt="Andres Felipe Beltran Assaf" fill className="object-cover" />
+              <Image src="/profile.jpg" alt="Andres Felipe Beltran Assaf" fill priority sizes="(min-width: 768px) 320px, 256px" className="object-cover" />
             </div>
           </motion.div>
         </motion.div>

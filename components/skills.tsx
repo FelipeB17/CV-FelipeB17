@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { BarChart3, Code, Workflow, ShieldCheck, type LucideIcon } from "lucide-react"
+
+type SkillGroup = {
+  title: string
+  icon: LucideIcon
+  skills: string[]
+}
 
 export default function Skills() {
   const [ref, inView] = useInView({
@@ -14,33 +21,41 @@ export default function Skills() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.15,
       },
     },
   }
 
   const item = {
-    hidden: { opacity: 0, scale: 0.8 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   }
 
-  const skills = [
-    { name: "Power BI", level: 75 },
-    { name: "Excel Avanzado", level: 80 },
-    { name: "SQL / MySQL", level: 70 },
-    { name: "Python (Análisis de Datos)", level: 55 },
-    { name: "ETL y Pipelines de Datos", level: 50 },
-    { name: "QA / Testing de Software", level: 60 },
-    { name: "Análisis de Datos", level: 70 },
-    { name: "Documentación Técnica", level: 65 },
-    { name: "Control de Procesos", level: 70 },
-    { name: "Visualización de Datos", level: 65 },
-    { name: "React / TypeScript", level: 45 },
-    { name: "Modelado de Datos", level: 50 },
+  const skillGroups: SkillGroup[] = [
+    {
+      title: "Datos",
+      icon: BarChart3,
+      skills: ["Power BI", "Excel avanzado", "SQL", "MySQL", "SQL Server", "MongoDB", "Python (análisis de datos)", "Modelado de datos"],
+    },
+    {
+      title: "Desarrollo de Software",
+      icon: Code,
+      skills: ["Java", "TypeScript", "React", "Angular", "Node.js + Express", "Spring Boot", "Next.js", "Tailwind CSS"],
+    },
+    {
+      title: "Microsoft 365 y Automatización",
+      icon: Workflow,
+      skills: ["Microsoft Graph API", "Excel Online / SharePoint", "Power Automate", "Microsoft Forms", "MSAL (autenticación)"],
+    },
+    {
+      title: "Calidad, Nube e Infraestructura",
+      icon: ShieldCheck,
+      skills: ["Pruebas de software (QA)", "Documentación funcional", "AWS Cloud Foundations", "Redes (IPv6, Cisco)", "Linux"],
+    },
   ]
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-b from-[#0c1425] to-[#0f172a]">
+    <section id="skills" className="py-20 relative overflow-hidden bg-gradient-to-b from-[#0c1425] to-[#0f172a]">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30" />
@@ -65,7 +80,7 @@ export default function Skills() {
             Mis <span className="text-gradient">Competencias</span> Técnicas
           </motion.h2>
           <motion.p variants={item} className="text-slate-300 max-w-2xl mx-auto">
-            Herramientas y tecnologías enfocadas en análisis de datos, ingeniería de datos y aseguramiento de calidad.
+            Herramientas y tecnologías con las que trabajo en análisis de datos, desarrollo de software y automatización.
           </motion.p>
         </motion.div>
 
@@ -73,26 +88,43 @@ export default function Skills() {
           initial="hidden"
           animate={inView ? "show" : "hidden"}
           variants={container}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
         >
-          {skills.map((skill) => (
-            <motion.div key={skill.name} variants={item}>
-              <div className="mb-2 flex justify-between items-center">
-                <h3 className="text-sm font-medium text-white">{skill.name}</h3>
-                <span className="text-sm font-medium text-blue-400">{skill.level}%</span>
+          {skillGroups.map((group) => (
+            <motion.div
+              key={group.title}
+              variants={item}
+              className="skill-card rounded-lg bg-slate-800/80 border border-blue-900/50 p-6"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-full bg-blue-900/30 text-blue-400 skill-icon">
+                  <group.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-bold text-white">{group.title}</h3>
               </div>
-              <div className="skill-progress-bar">
-                <motion.div
-                  className="skill-progress-value"
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                  transition={{ duration: 1.5, delay: 0.2 }}
-                />
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800/50 rounded-full text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-              <p className="mt-1 text-xs text-slate-400">En proceso de aprendizaje</p>
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="text-center text-slate-300 mt-10"
+        >
+          <span className="text-blue-400 font-medium">Idiomas:</span> Español (nativo) · Inglés (nivel bueno en lectura,
+          habla y escritura)
+        </motion.p>
       </div>
     </section>
   )

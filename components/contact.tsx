@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, MapPin, Github, Linkedin, Send } from "lucide-react"
+import { Mail, MapPin, Send } from "lucide-react"
+import { Github, Linkedin } from "@/components/brand-icons"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
@@ -19,6 +20,7 @@ export default function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -45,19 +47,29 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(false)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      // Netlify Forms: el formulario está registrado en public/__forms.html
+      const body = new URLSearchParams(new FormData(e.currentTarget) as unknown as Record<string, string>)
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      })
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
 
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormData({ name: "", email: "", message: "" })
-
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitSuccess(false), 5000)
+      setSubmitSuccess(true)
+      setFormData({ name: "", email: "", message: "" })
+      setTimeout(() => setSubmitSuccess(false), 5000)
+    } catch {
+      setSubmitError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -98,7 +110,13 @@ export default function Contact() {
           >
             <Card className="border-0 shadow-xl overflow-hidden bg-white dark:bg-slate-800">
               <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form name="contacto" onSubmit={handleSubmit} className="space-y-6">
+                  <input type="hidden" name="form-name" value="contacto" />
+                  <p className="hidden">
+                    <label>
+                      No llenar: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                    </label>
+                  </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-blue-600 dark:text-blue-400">
@@ -186,6 +204,15 @@ export default function Contact() {
                       ¡Mensaje enviado con éxito! Te responderé pronto.
                     </div>
                   )}
+                  {submitError && (
+                    <div className="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-md text-center">
+                      No se pudo enviar el mensaje. Escríbeme directamente a{" "}
+                      <a href="mailto:andresfelipebeltranassaf@gmail.com" className="underline">
+                        andresfelipebeltranassaf@gmail.com
+                      </a>
+                      .
+                    </div>
+                  )}
                 </form>
               </CardContent>
             </Card>
@@ -201,8 +228,8 @@ export default function Contact() {
                 <div>
                   <h3 className="text-2xl font-bold mb-6 text-gradient">Conectemos</h3>
                   <p className="text-slate-600 dark:text-slate-300 mb-8">
-                    Estoy interesado en oportunidades de aprendizaje, colaboraciones o simplemente para charlar sobre
-                    tecnología.
+                    Actualmente realizo mis prácticas profesionales en Termotasajero. Estoy abierto a colaboraciones,
+                    proyectos y oportunidades en análisis de datos y desarrollo de software.
                   </p>
                 </div>
 

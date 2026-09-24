@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Github, Mail, ArrowUp, Linkedin } from "lucide-react"
+import { Mail, ArrowUp } from "lucide-react"
+import { Github, Linkedin } from "@/components/brand-icons"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Logo from "./logo"
@@ -40,8 +41,8 @@ export default function Footer() {
               <h3 className="text-2xl font-bold ml-3 text-white">Andres Felipe Beltran Assaf</h3>
             </div>
             <p className="text-blue-200 max-w-md">
-              Estudiante de Ingeniería de Sistemas con enfoque en Análisis de Datos, Ingeniería de Datos y QA.
-              Competente en Power BI, SQL, Excel avanzado y pruebas de software.
+              Estudiante de Ingeniería de Sistemas con enfoque en Análisis de Datos, Desarrollo de Software y Bases de Datos.
+              Power BI, SQL, Java, React, Angular y automatización con Microsoft 365.
             </p>
           </motion.div>
 
